@@ -12,6 +12,7 @@ public class Main {
         try(BufferedReader br = new BufferedReader(new FileReader("app.log"))) {
             String line;
             while ((line = br.readLine()) != null) {
+                line = line.toUpperCase();
                 if(line.contains("INFO")) logs[0]++;
                 else if(line.contains("WARNING")) logs[1]++;
                 else if(line.contains("ERROR")) logs[2]++;
@@ -20,7 +21,7 @@ public class Main {
             System.out.println("Warnings: " + logs[1]);
             System.out.println("Errors: " + logs[2]);
         } catch (FileNotFoundException e) {
-            System.out.println("Please provide app.log (not found)");
+            System.out.println("Please create app.log (wasn't found)");
         } catch (IOException e) {
             System.out.println("File error: " + e.getMessage());
         }
